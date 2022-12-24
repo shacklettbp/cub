@@ -125,6 +125,7 @@ CUB_RUNTIME_FUNCTION inline int CurrentDevice()
     return device;
 }
 
+#ifndef __CUDACC_RTC__
 /**
  * \brief RAII helper which saves the current device and switches to the
  *        specified device on construction and switches to the saved device on
@@ -315,6 +316,7 @@ public:
         return entry.payload;
     }
 };
+#endif
 
 /**
  * \brief Retrieves the PTX version that will be used on the current device (major * 100 + minor * 10).
@@ -368,6 +370,7 @@ CUB_RUNTIME_FUNCTION inline cudaError_t PtxVersionUncached(int& ptx_version)
     return result;
 }
 
+#ifndef __CUDACC_RTC__
 /**
  * \brief Retrieves the PTX version that will be used on \p device (major * 100 + minor * 10).
  */
@@ -409,6 +412,7 @@ __host__ inline cudaError_t PtxVersion(int& ptx_version, int device)
 
     return payload.error;
 }
+#endif
 
 /**
  * \brief Retrieves the PTX version that will be used on the current device (major * 100 + minor * 10).
