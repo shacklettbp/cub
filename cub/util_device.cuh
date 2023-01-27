@@ -110,8 +110,10 @@ cudaError_t AliasTemporaries(
 /**
  * \brief Empty kernel for querying PTX manifest metadata (e.g., version) for the current device
  */
+#if 0
 template <typename T>
 __global__ void EmptyKernel(void) { }
+#endif
 
 #endif  // DOXYGEN_SHOULD_SKIP_THIS
 
@@ -318,6 +320,7 @@ public:
 };
 #endif
 
+#if 0
 /**
  * \brief Retrieves the PTX version that will be used on the current device (major * 100 + minor * 10).
  */
@@ -369,6 +372,7 @@ CUB_RUNTIME_FUNCTION inline cudaError_t PtxVersionUncached(int& ptx_version)
 
     return result;
 }
+#endif
 
 #ifndef __CUDACC_RTC__
 /**
@@ -414,6 +418,7 @@ __host__ inline cudaError_t PtxVersion(int& ptx_version, int device)
 }
 #endif
 
+#if 0
 /**
  * \brief Retrieves the PTX version that will be used on the current device (major * 100 + minor * 10).
  *
@@ -447,6 +452,7 @@ CUB_RUNTIME_FUNCTION inline cudaError_t PtxVersion(int &ptx_version)
 
   return result;
 }
+#endif
 
 /**
  * \brief Retrieves the SM version of \p device (major * 100 + minor * 10)
